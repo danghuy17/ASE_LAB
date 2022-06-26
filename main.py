@@ -1,8 +1,5 @@
-from cmath import exp
-from email.policy import strict
 import tkinter as tk
 from tkinter import Frame, ttk
-from turtle import st
 from PIL import Image, ImageTk
 
 
