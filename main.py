@@ -19,9 +19,7 @@ class App(tk.Tk):
         self.geometry(f"{self.width}x{self.height}")
         self.resizable(0, 0)
 
-        # self.columnconfigure(0, weight=1)
-        # self.columnconfigure(1, weight=3)
-        # Frame 
+        # MENU
         self.createMenu()
 
 
@@ -62,6 +60,7 @@ class App(tk.Tk):
         button_3 = ttk.Button(self.frame1, image=self.image_3, text="Hoạt động", compound=tk.LEFT, command=self.button3)
         button_3.grid(row=c_row+3, sticky=tk.N, padx=5)
 
+    # Button 0
     def buttonHome(self):
         self.frame2.destroy()
         self.frame2 = tk.Frame(self, bg="white")
@@ -72,6 +71,7 @@ class App(tk.Tk):
         label_home = ttk.Label(self.frame2, image=self.image_ase, text="ASE LAB" , font=("Arial", 25), compound=tk.LEFT)
         label_home.pack(side="right", expand=True)
 
+    # Button 1
     def buttonInfo(self):
         self.frame2.destroy()
         self.frame2 = tk.Frame(self, bg="white")
@@ -103,6 +103,7 @@ chỉ đạo trực tiếp từ 2 Thầy :", font=("Arial", self.font_size))
         label_i2 = ttk.Label(self.frame2, image=self.image_t2, text="TS. Hán Trọng Thanh", compound=tk.LEFT)
         label_i2.grid(row=3, sticky=tk.NE)
 
+    # Button 2
     def button2(self):
         self.frame2.destroy()
         self.frame2 = tk.Frame(self, bg="white")
@@ -134,6 +135,7 @@ chỉ đạo trực tiếp từ 2 Thầy :", font=("Arial", self.font_size))
         label_5 = ttk.Label(self.frame2, text="Thiết kế hệ thống sân bay và máy bay cứu hộ")
         label_5.grid(column=0, row=start + 6, sticky=tk.W, padx=20, pady=10)
 
+    # Button 3
     def button3(self):
         self.frame2.destroy()
         self.frame2 = tk.Frame(self, bg="white")
@@ -155,6 +157,7 @@ chỉ đạo trực tiếp từ 2 Thầy :", font=("Arial", self.font_size))
         button_next = ttk.Button(self.frame2, image=self.image_n, command=self.buttonN)
         button_next.grid(column=1, row=2, sticky=tk.N)
 
+    # Button 3
     def buttonN(self):
         self.frame2.destroy()
         self.frame2 = tk.Frame(self, bg="white")
