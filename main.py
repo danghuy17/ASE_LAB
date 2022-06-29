@@ -216,18 +216,14 @@ chỉ đạo trực tiếp từ 2 Thầy :", font=("Arial", self.font_size))
                 frame = cv2.resize(frame, dsize=None, fx=1, fy=1)
                 frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                 self.photo = ImageTk.PhotoImage(Image.fromarray(frame))
-                self.canvas.create_image(0, 0, image=self.photo, anchor=tk.NW)
+                self.canvas.create_image(10, 10, image=self.photo, anchor=tk.NW)
                 self.after(15, update_frame)
             else:
                 # Tat camera
                 self.video.release()
                 cv2.destroyAllWindows()
         update_frame()
-                
-            
 
 if __name__ == "__main__":
     app = App()
     app.mainloop()
-
-
