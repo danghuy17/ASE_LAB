@@ -4,6 +4,7 @@ from PIL import Image, ImageTk
 import cv2
 
 
+
 class App(tk.Tk):
 
     def __init__(self):
@@ -25,12 +26,16 @@ class App(tk.Tk):
 
     # Khoi tao thanh MENU ben trai
     def createMenu(self):
+        # Tao khung 
         self.frame1 = tk.Frame(self, bg='#25A253')
+        # Khung duoc dat tai ben trai cua so lam viec
         self.frame1.pack(side="left", ipadx=5, ipady=5, fill="both")
 
+        # Khung ben phai hien thi chuc nang
         self.frame2 = tk.Frame(self, bg="white")
         self.frame2.pack(side="right", expand=True, fill="both")
 
+        # Chia khung
         for i in range(10):
             self.frame1.rowconfigure(i, weight=1)
 
@@ -44,7 +49,6 @@ class App(tk.Tk):
 
         # Button 1 - Gioi thieu
         self.image_info = ImageTk.PhotoImage(Image.open("./assets/info_icon.png"))
-        self.icon_info = 100
         button_info = ttk.Button(self.frame1, image=self.image_info, text="Giới thiệu", compound=tk.LEFT, command=self.buttonInfo)
         button_info.grid(row=c_row + 1, sticky=tk.N, padx=5)
 
@@ -124,6 +128,7 @@ chỉ đạo trực tiếp từ 2 Thầy :", font=("Arial", self.font_size))
         self.frame2 = tk.Frame(self, bg="white")
         self.frame2.pack(side="right", expand=True, fill='both')
         
+        # Chia cot, va hang
         self.frame2.columnconfigure(0, weight=6)
         self.frame2.columnconfigure(1, weight=1)
 
@@ -199,25 +204,28 @@ chỉ đạo trực tiếp từ 2 Thầy :", font=("Arial", self.font_size))
         self.frame2 = tk.Frame(self, bg="white")
         self.frame2.pack(side="right", expand=True, fill="both")
 
+        # Chon thiet bi
         self.video = cv2.VideoCapture(0)
 
+        # Lay chieu dai va chieu cao cua camera
         canvas_w = self.video.get(cv2.CAP_PROP_FRAME_WIDTH)
         canvas_h = self.video.get(cv2.CAP_PROP_FRAME_HEIGHT)
 
+        # Tao 1 canvas
         self.canvas = Canvas(self.frame2, width=canvas_w, height=canvas_h, bg="red")
         self.canvas.pack()
         self.photo = None
 
+        # Cap nhat anh moi 
         def update_frame():
             if self.vd_off == False:
-                # Bat camera
+                # Doc tu camera
                 ret, frame = self.video.read()
-
                 frame = cv2.resize(frame, dsize=None, fx=1, fy=1)
                 frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                 self.photo = ImageTk.PhotoImage(Image.fromarray(frame))
                 self.canvas.create_image(10, 10, image=self.photo, anchor=tk.NW)
-                self.after(15, update_frame)
+                self.after(1, update_frame)
             else:
                 # Tat camera
                 self.video.release()
